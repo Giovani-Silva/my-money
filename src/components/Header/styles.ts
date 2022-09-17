@@ -1,5 +1,35 @@
 import styled from 'styled-components';
 
+export const Wrapper = styled.div`
+  label {
+    display: none;
+    @media (max-width: 40rem) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 2rem;
+      height: 2rem;
+      background: cyan;
+      border-radius: 6px;
+      margin: 2rem;
+      background: ${(props) => props.theme['background-300']};
+      cursor: pointer;
+      margin-left: auto;
+    }
+  }
+
+  input[type='checkbox'] {
+    position: absolute;
+    right: 10000%;
+  }
+
+  input:checked ~ header {
+    @media (max-width: 40rem) {
+      left: 0;
+    }
+  }
+`;
+
 export const HeaderWrapper = styled.header`
   background: ${(props) => props.theme['background-300']};
   padding: 2rem;
@@ -8,6 +38,14 @@ export const HeaderWrapper = styled.header`
   height: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
+
+  @media (max-width: 40rem) {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    transition: left 250ms ease-in-out;
+  }
 `;
 export const Brand = styled.div`
   display: flex;
