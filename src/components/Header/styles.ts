@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
+  width: min(100%, 18.75rem);
   label {
     display: none;
     @media (max-width: 40rem) {
