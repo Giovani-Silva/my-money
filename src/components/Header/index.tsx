@@ -18,7 +18,7 @@ export function Header() {
 
         <Nav>
           <div>
-            <NavLink to="/">
+            <NavLink to="/" end>
               <HouseSimple size={24} />
               Dashboard
             </NavLink>
