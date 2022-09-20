@@ -7,11 +7,11 @@ export function TitleBar() {
       <Title>Dashboard</Title>
 
       <Actions>
-        <MagnifyingGlass />
-        <BellSimple />
-        <UserCircle />
+        <MagnifyingGlass size={24} />
+        <BellSimple size={24} />
+        <UserCircle size={24} />
         <span>Giovani Silva</span>
-        <CaretDown />
+        <CaretDown size={24} />
       </Actions>
     </Bar>
   );
