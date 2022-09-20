@@ -6,3 +6,8 @@ export const LayoutContainer = styled.div`
   display: flex;
   gap: 2rem;
 `;
+
+export const Content = styled.div`
+  width: calc(100vw - 20.75rem);
+  padding: 2rem;
+`;
