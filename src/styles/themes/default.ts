@@ -6,6 +6,7 @@ export const defaultTheme = {
   'background-200': '#FAFAFA',
   'background-300': '#EBE8E8',
   'background-400': '#363A3F',
+  'background-500': '#4E5257',
 
   'primary-500': '#C8EE44',
 
@@ -22,4 +23,7 @@ export const defaultTheme = {
 
   'orange-300': '#FFF1E6',
   'orange-500': '#F2994A',
+
+  'font-default': " 'Kumbh Sans', sans-serif",
+  'font-title': "'Concert One', cursive",
 } as const;
