@@ -18,4 +18,9 @@ export const GlobalStyle = createGlobalStyle`
   body, input, textarea, button {
     font: 400 1rem 'Kumbh Sans', sans-serif;
   }
+
+  h1, h2, h3 {
+      font-family: 'Concert One', cursive;
+      letter-spacing: 1.41px;
+  }
 `;

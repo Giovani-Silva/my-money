@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Bar = styled.div`
-  min-height: 3rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
