@@ -1,3 +1,5 @@
+import { TransactionsList } from '../../components/TransactionsList';
+
 export function Transactions() {
-  return <div>Transactions</div>;
+  return <TransactionsList />;
 }
