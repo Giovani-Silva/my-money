@@ -19,7 +19,7 @@ export const SummaryCard = styled.div<SummaryCardProps>`
   border-radius: 6px;
   padding: 2rem;
   font-family: ${(props) => props.theme['font-title']};
-  letter-spacing: 2.11px;
+  letter-spacing: 2px;
   header {
     display: flex;
     align-items: center;
