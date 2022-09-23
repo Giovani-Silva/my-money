@@ -5,10 +5,11 @@ export const defaultTheme = {
   'background-100': '#FAFAFA',
   'background-200': '#F8F8F8',
   'background-300': '#EBE8E8',
-  'background-400': '#363A3F',
-  'background-500': '#4E5257',
+  'background-400': '#4E5257',
+  'background-500': '#363A3F',
 
   'primary-500': '#C8EE44',
+  'primary-600': '#A1BF34',
 
   'text-200': '#929EAE',
   'text-300': '#929EAE',
@@ -16,8 +17,8 @@ export const defaultTheme = {
   'text-500': '#1B212D',
 
   'green-300': '#EEFEF2',
-  'green-400': '#29A073',
-  'green-500': '#19D076',
+  'green-400': '#19D076',
+  'green-500': '#29A073',
 
   'red-500': '#E5363D',
 
