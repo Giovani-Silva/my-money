@@ -20,10 +20,13 @@ export const defaultTheme = {
   'green-400': '#19D076',
   'green-500': '#29A073',
 
-  'red-500': '#E5363D',
+  'red-300': '#FFCFD0',
+  'red-400': '#E5363D',
+  'red-500': '#9A292D',
 
   'orange-300': '#FFF1E6',
-  'orange-500': '#F2994A',
+  'orange-400': '#F2994A',
+  'orange-500': '#A56126',
 
   'font-default': " 'Kumbh Sans', sans-serif",
   'font-title': "'Concert One', cursive",
