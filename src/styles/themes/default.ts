@@ -17,16 +17,16 @@ export const defaultTheme = {
   'text-500': '#1B212D',
 
   'green-300': '#EEFEF2',
-  'green-400': '#19D076',
-  'green-500': '#29A073',
+  'green-500': '#19D076',
+  'green-600': '#29A073',
 
   'red-300': '#FFCFD0',
-  'red-400': '#E5363D',
-  'red-500': '#9A292D',
+  'red-500': '#E5363D',
+  'red-600': '#9A292D',
 
   'orange-300': '#FFF1E6',
-  'orange-400': '#F2994A',
-  'orange-500': '#A56126',
+  'orange-500': '#F2994A',
+  'orange-600': '#A56126',
 
   'font-default': " 'Kumbh Sans', sans-serif",
   'font-title': "'Concert One', cursive",
