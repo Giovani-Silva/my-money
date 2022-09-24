@@ -1,26 +1,27 @@
+import { dateFormatter, priceFormatter } from '../../utils/formatter';
 import { PriceHighlight, TransactionsContainer, TransactionsTable } from './styles';
 
-export function TransactionsList() {
+export function TransactionsList(props) {
   return (
     <TransactionsContainer>
       <TransactionsTable>
         <tbody>
-          <tr>
-            <td>13/04/2022</td>
-            <td width="40%">Desenvolvimento de site</td>
-            <td>
-              <PriceHighlight variant="income">R$ 12.000,00</PriceHighlight>
-            </td>
-            <td>Venda</td>
-          </tr>
-          <tr>
-            <td>10/04/2022</td>
-            <td width="40%">Hambúrguer</td>
-            <td>
-              <PriceHighlight variant="outcome">-R$ 59,00</PriceHighlight>
-            </td>
-            <td>Alimentação</td>
-          </tr>
+          {props.transactions.map((transaction: any) => {
+            return (
+              <tr key={transaction.id}>
+                <td>{dateFormatter.format(new Date(transaction.createdAt))}</td>
+                <td width="50%">{transaction.description}</td>
+                <td>
+                  <PriceHighlight variant={transaction.type}>
+                    {' '}
+                    {transaction.type === 'outcome' && '- '}
+                    {priceFormatter.format(transaction.price)}
+                  </PriceHighlight>
+                </td>
+                <td>{transaction.category}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </TransactionsTable>
     </TransactionsContainer>
