@@ -28,10 +28,10 @@ export const Content = styled(Dialog.Content)`
       border-radius: 6px;
       border: 0;
       background: ${(props) => props.theme['background-300']};
-      color: ${(props) => props.theme['text-300']};
+      color: ${(props) => props.theme['text-500']};
       padding: 1rem;
       &::placeholder {
-        color: ${(props) => props.theme['text-500']};
+        color: ${(props) => props.theme['text-200']};
       }
     }
     button[type='submit'] {
@@ -45,7 +45,7 @@ export const Content = styled(Dialog.Content)`
       margin-top: 1.25rem;
       cursor: pointer;
       &:hover {
-        background: ${(props) => props.theme['green-400']};
+        background: ${(props) => props.theme['green-500']};
         transition: background-color 0.2s;
       }
     }
@@ -86,7 +86,7 @@ export const TransactionTypeButton = styled(RadioGroup.Item)<TransactionTypeButt
   border: 0;
   color: ${(props) => props.theme['text-500']};
   svg {
-    color: ${(props) => (props.variant === 'income' ? props.theme['green-400'] : props.theme['red-400'])};
+    color: ${(props) => (props.variant === 'income' ? props.theme['green-500'] : props.theme['red-500'])};
   }
 
   &[data-state='unchecked']:hover {
