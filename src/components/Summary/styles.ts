@@ -42,7 +42,7 @@ export const SummaryCard = styled.div<SummaryCardProps>`
   ${(props) =>
     props.variant === 'negative' &&
     css`
-      color: ${(props) => props.theme['orange-500']};
+      color: ${(props) => props.theme['red-500']};
       background: ${props.theme['background-500']};
     `}
 
@@ -56,7 +56,7 @@ export const SummaryCard = styled.div<SummaryCardProps>`
     ${(props) =>
       props.variant === 'negative' &&
       css`
-        color: ${(props) => props.theme['orange-500']};
+        color: ${(props) => props.theme['red-500']};
         background: ${props.theme['background-500']};
       `};
   }
