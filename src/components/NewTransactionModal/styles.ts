@@ -34,25 +34,26 @@ export const Content = styled(Dialog.Content)`
         color: ${(props) => props.theme['text-200']};
       }
     }
-    button[type='submit'] {
-      height: 50px;
-      border: 0;
-      background: ${(props) => props.theme['green-500']};
-      color: ${(props) => props.theme.white};
-      font-weight: bold;
-      padding: 0 1.25rem;
-      border-radius: 6px;
-      margin-top: 1.25rem;
-      cursor: pointer;
-      &:disabled {
-        opacity: 0.6;
-        cursor: not-allowed;
-      }
-      &:not(:disabled):hover {
-        background: ${(props) => props.theme['green-500']};
-        transition: background-color 0.2s;
-      }
-    }
+  }
+`;
+
+export const ButtonSumit = styled.button<TransactionTypeButtonProps>`
+  height: 50px;
+  border: 0;
+  background: ${(props) => (props.variant === 'income' ? props.theme['green-500'] : props.theme['red-500'])};
+  color: ${(props) => props.theme.white};
+  font-weight: bold;
+  padding: 0 1.25rem;
+  border-radius: 6px;
+  margin-top: 1.25rem;
+  cursor: pointer;
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  &:not(:disabled):hover {
+    background: ${(props) => (props.variant === 'income' ? props.theme['green-600'] : props.theme['red-600'])};
+    transition: background-color 0.2s;
   }
 `;
 

@@ -1,11 +1,10 @@
-import * as Dialog from '@radix-ui/react-dialog';
-import * as z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm,Controller } from 'react-hook-form';
+import * as Dialog from '@radix-ui/react-dialog';
 import { ArrowCircleDown, ArrowCircleUp, X } from 'phosphor-react';
+import { Controller, useForm } from 'react-hook-form';
+import * as z from 'zod';
 
-import { CloseButton, Content, Overlay, TransactionType, TransactionTypeButton } from './styles';
-
+import { ButtonSumit, CloseButton, Content, Overlay, TransactionType, TransactionTypeButton } from './styles';
 
 const newTransactionFormSchema = z.object({
   description: z.string(),
@@ -17,23 +16,28 @@ const newTransactionFormSchema = z.object({
 type NewTransactionFormInputs = z.infer<typeof newTransactionFormSchema>;
 
 export function NewTransactionModal() {
-   const {
+  const {
     control,
-     register,
-     handleSubmit,
-     formState: { isSubmitting },
-   } = useForm<NewTransactionFormInputs>({
-     resolver: zodResolver(newTransactionFormSchema),
-     defaultValues: {
-      type: 'income'
-    }
-   });
+    register,
+    handleSubmit,
+    watch,
+    formState: { isSubmitting },
+  } = useForm<NewTransactionFormInputs>({
+    resolver: zodResolver(newTransactionFormSchema),
+    defaultValues: {
+      type: 'income',
+    },
+  });
 
-   async function handleCreateNewTransaction(data: NewTransactionFormInputs) {
-     await new Promise((resolve) => setTimeout(resolve, 2000));
+  const isIncomeOrOutcome = watch('type');
 
-     console.log(data);
-   }
+  console.log(isIncomeOrOutcome);
+
+  async function handleCreateNewTransaction(data: NewTransactionFormInputs) {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    console.log(data);
+  }
   return (
     <Dialog.Portal>
       <Overlay />
@@ -68,9 +72,9 @@ export function NewTransactionModal() {
             }}
           />
 
-          <button type="submit" disabled={isSubmitting}>
+          <ButtonSumit type="submit" disabled={isSubmitting} variant={isIncomeOrOutcome}>
             Save
-          </button>
+          </ButtonSumit>
         </form>
       </Content>
     </Dialog.Portal>
