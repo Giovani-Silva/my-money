@@ -15,6 +15,22 @@
       "category": "Alimentação",
       "price": 50,
       "createdAt": "2022-07-29T19:30:44.505Z"
+    },
+    {
+      "description": "Mercado",
+      "price": 589,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2022-10-01T22:03:18.188Z",
+      "id": 3
+    },
+    {
+      "description": "Medicamentos",
+      "price": 189,
+      "category": "Saúde",
+      "type": "outcome",
+      "createdAt": "2022-10-01T23:09:22.112Z",
+      "id": 4
     }
   ]
 }
