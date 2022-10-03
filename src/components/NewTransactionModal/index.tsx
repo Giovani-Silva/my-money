@@ -1,24 +1,31 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as Dialog from '@radix-ui/react-dialog';
-import { ArrowCircleDown, ArrowCircleUp, X } from 'phosphor-react';
-import { Controller, useForm } from 'react-hook-form';
-import * as z from 'zod';
-import { useContext } from 'react';
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as Dialog from '@radix-ui/react-dialog'
+import { ArrowCircleDown, ArrowCircleUp, X } from 'phosphor-react'
+import { Controller, useForm } from 'react-hook-form'
+import * as z from 'zod'
+import { useContext } from 'react'
 
-import { ButtonSumit, CloseButton, Content, Overlay, TransactionType, TransactionTypeButton } from './styles';
-import { TransactionsContext } from '../../contexts/TransactionsContext';
+import {
+  ButtonSumit,
+  CloseButton,
+  Content,
+  Overlay,
+  TransactionType,
+  TransactionTypeButton,
+} from './styles'
+import { TransactionsContext } from '../../contexts/TransactionsContext'
 
 const newTransactionFormSchema = z.object({
   description: z.string(),
   price: z.number(),
   category: z.string(),
   type: z.enum(['income', 'outcome']),
-});
+})
 
-type NewTransactionFormInputs = z.infer<typeof newTransactionFormSchema>;
+type NewTransactionFormInputs = z.infer<typeof newTransactionFormSchema>
 
 export function NewTransactionModal() {
-  const { createTransaction } = useContext(TransactionsContext);
+  const { createTransaction } = useContext(TransactionsContext)
   const {
     control,
     register,
@@ -31,23 +38,23 @@ export function NewTransactionModal() {
     defaultValues: {
       type: 'income',
     },
-  });
+  })
 
-  const isIncomeOrOutcome = watch('type');
+  const isIncomeOrOutcome = watch('type')
 
-  console.log(isIncomeOrOutcome);
+  console.log(isIncomeOrOutcome)
 
   async function handleCreateNewTransaction(data: NewTransactionFormInputs) {
-    const { description, price, category, type } = data;
+    const { description, price, category, type } = data
 
     await createTransaction({
       description,
       price,
       category,
       type,
-    });
+    })
 
-    reset();
+    reset()
   }
   return (
     <Dialog.Portal>
@@ -61,15 +68,33 @@ export function NewTransactionModal() {
         </CloseButton>
 
         <form onSubmit={handleSubmit(handleCreateNewTransaction)}>
-          <input type="text" placeholder="Descrição" required {...register('description')} />
-          <input type="number" placeholder="Preço" required {...register('price', { valueAsNumber: true })} />
-          <input type="text" placeholder="Categoria" required {...register('category')} />
+          <input
+            type="text"
+            placeholder="Descrição"
+            required
+            {...register('description')}
+          />
+          <input
+            type="number"
+            placeholder="Preço"
+            required
+            {...register('price', { valueAsNumber: true })}
+          />
+          <input
+            type="text"
+            placeholder="Categoria"
+            required
+            {...register('category')}
+          />
           <Controller
             control={control}
             name="type"
             render={({ field }) => {
               return (
-                <TransactionType onValueChange={field.onChange} value={field.value}>
+                <TransactionType
+                  onValueChange={field.onChange}
+                  value={field.value}
+                >
                   <TransactionTypeButton variant="income" value="income">
                     <ArrowCircleUp size={24} />
                     Entrada
@@ -79,15 +104,19 @@ export function NewTransactionModal() {
                     Saída
                   </TransactionTypeButton>
                 </TransactionType>
-              );
+              )
             }}
           />
 
-          <ButtonSumit type="submit" disabled={isSubmitting} variant={isIncomeOrOutcome}>
+          <ButtonSumit
+            type="submit"
+            disabled={isSubmitting}
+            variant={isIncomeOrOutcome}
+          >
             Save
           </ButtonSumit>
         </form>
       </Content>
     </Dialog.Portal>
-  );
+  )
 }

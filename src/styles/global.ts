@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -23,4 +23,4 @@ export const GlobalStyle = createGlobalStyle`
       font-family:${(props) => props.theme['font-title']};
       letter-spacing: 1.41px;
   }
-`;
+`

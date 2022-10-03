@@ -1,3 +1,3 @@
 export function Wallets() {
-  return <div>Wallets</div>;
+  return <div>Wallets</div>
 }

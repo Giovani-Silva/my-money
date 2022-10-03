@@ -1,9 +1,9 @@
-import { Route, Routes } from 'react-router-dom';
-import { DefaultLayout } from './layouts/DefaultLayout';
-import { Home } from './pages/Home';
-import { Settings } from './pages/Settings';
-import { Transactions } from './pages/Transactions';
-import { Wallets } from './pages/Wallets';
+import { Route, Routes } from 'react-router-dom'
+import { DefaultLayout } from './layouts/DefaultLayout'
+import { Home } from './pages/Home'
+import { Settings } from './pages/Settings'
+import { Transactions } from './pages/Transactions'
+import { Wallets } from './pages/Wallets'
 
 export function Router() {
   return (
@@ -15,5 +15,5 @@ export function Router() {
         <Route path="/settings" element={<Settings />} />
       </Route>
     </Routes>
-  );
+  )
 }

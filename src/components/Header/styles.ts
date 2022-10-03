@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   width: min(100%, 18.75rem);
@@ -29,7 +29,7 @@ export const Wrapper = styled.div`
       left: 0;
     }
   }
-`;
+`
 
 export const HeaderWrapper = styled.header`
   background: ${(props) => props.theme['background-300']};
@@ -47,7 +47,7 @@ export const HeaderWrapper = styled.header`
     left: -100%;
     transition: left 250ms ease-in-out;
   }
-`;
+`
 export const Brand = styled.div`
   display: flex;
   gap: 1rem;
@@ -55,7 +55,7 @@ export const Brand = styled.div`
   h1 {
     font-size: clamp(1.25rem, -0.875rem + 8.333vw, 1.5rem);
   }
-`;
+`
 
 export const Nav = styled.nav`
   margin: 3rem 0;
@@ -92,4 +92,4 @@ export const Nav = styled.nav`
       }
     }
   }
-`;
+`

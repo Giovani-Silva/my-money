@@ -1,7 +1,14 @@
-import { ChartLine, DotsThreeVertical, Gear, HouseSimple, SignOut, Wallet } from 'phosphor-react';
-import { NavLink } from 'react-router-dom';
-import Logo from '../../assets/logo-my-money.svg';
-import { Brand, HeaderWrapper, Nav, Wrapper } from './styles';
+import {
+  ChartLine,
+  DotsThreeVertical,
+  Gear,
+  HouseSimple,
+  SignOut,
+  Wallet,
+} from 'phosphor-react'
+import { NavLink } from 'react-router-dom'
+import Logo from '../../assets/logo-my-money.svg'
+import { Brand, HeaderWrapper, Nav, Wrapper } from './styles'
 
 export function Header() {
   return (
@@ -45,5 +52,5 @@ export function Header() {
         </Nav>
       </HeaderWrapper>
     </Wrapper>
-  );
+  )
 }

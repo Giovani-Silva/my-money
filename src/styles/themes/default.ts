@@ -30,4 +30,4 @@ export const defaultTheme = {
 
   'font-default': " 'Kumbh Sans', sans-serif",
   'font-title': "'Concert One', cursive",
-} as const;
+} as const

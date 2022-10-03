@@ -1,5 +1,10 @@
-import { BellSimple, CaretDown, MagnifyingGlass, UserCircle } from 'phosphor-react';
-import { Actions, Bar, Title } from './styles';
+import {
+  BellSimple,
+  CaretDown,
+  MagnifyingGlass,
+  UserCircle,
+} from 'phosphor-react'
+import { Actions, Bar, Title } from './styles'
 
 export function TitleBar() {
   return (
@@ -14,5 +19,5 @@ export function TitleBar() {
         <CaretDown size={24} />
       </Actions>
     </Bar>
-  );
+  )
 }

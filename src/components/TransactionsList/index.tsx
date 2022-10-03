@@ -1,5 +1,9 @@
-import { dateFormatter, priceFormatter } from '../../utils/formatter';
-import { PriceHighlight, TransactionsContainer, TransactionsTable } from './styles';
+import { dateFormatter, priceFormatter } from '../../utils/formatter'
+import {
+  PriceHighlight,
+  TransactionsContainer,
+  TransactionsTable,
+} from './styles'
 
 export function TransactionsList(props) {
   return (
@@ -20,10 +24,10 @@ export function TransactionsList(props) {
                 </td>
                 <td>{transaction.category}</td>
               </tr>
-            );
+            )
           })}
         </tbody>
       </TransactionsTable>
     </TransactionsContainer>
-  );
+  )
 }
