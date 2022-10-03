@@ -1,15 +1,13 @@
-import {
-  BellSimple,
-  CaretDown,
-  MagnifyingGlass,
-  UserCircle,
-} from 'phosphor-react'
-import { Actions, Bar, Title } from './styles'
+import { BellSimple, CaretDown, MagnifyingGlass, UserCircle } from 'phosphor-react';
+import { useContext } from 'react';
+import { TitleContext } from '../../contexts/TitleContext';
+import { Actions, Bar, Title } from './styles';
 
 export function TitleBar() {
+  const { title } = useContext(TitleContext);
   return (
     <Bar>
-      <Title>Dashboard</Title>
+      <Title>{title}</Title>
 
       <Actions>
         <MagnifyingGlass size={24} />
@@ -19,5 +17,5 @@ export function TitleBar() {
         <CaretDown size={24} />
       </Actions>
     </Bar>
-  )
+  );
 }

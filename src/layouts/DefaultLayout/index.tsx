@@ -1,7 +1,7 @@
-import { Outlet } from 'react-router-dom'
-import { Header } from '../../components/Header'
-import { TitleBar } from '../../components/TitleBar'
-import { LayoutContainer, Content } from './styles'
+import { Outlet } from 'react-router-dom';
+import { Header } from '../../components/Header';
+import { TitleBar } from '../../components/TitleBar';
+import { Content, LayoutContainer } from './styles';
 
 export function DefaultLayout() {
   return (
@@ -12,5 +12,5 @@ export function DefaultLayout() {
         <Outlet />
       </Content>
     </LayoutContainer>
-  )
+  );
 }
