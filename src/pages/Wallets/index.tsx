@@ -1,11 +1,42 @@
+import { AsteriskSimple } from 'phosphor-react';
 import { useContext, useEffect } from 'react';
 import { TitleContext } from '../../contexts/TitleContext';
+import { Card, Wrapper } from './styles';
 
 export function Wallets() {
   const { setTitle } = useContext(TitleContext);
+  const sizeAsterisk = 12;
 
   useEffect(() => {
     setTitle('My Wallets');
   }, [setTitle]);
-  return <div>My Wallets</div>;
+  return (
+    <Wrapper>
+      <Card>
+        <h3>Card name</h3>
+        <ul>
+          <li>
+            <AsteriskSimple size={sizeAsterisk} />
+            <AsteriskSimple size={sizeAsterisk} />
+            <AsteriskSimple size={sizeAsterisk} />
+            <AsteriskSimple size={sizeAsterisk} />
+          </li>
+          <li>
+            <AsteriskSimple size={sizeAsterisk} />
+            <AsteriskSimple size={sizeAsterisk} />
+            <AsteriskSimple size={sizeAsterisk} />
+            <AsteriskSimple size={sizeAsterisk} />
+          </li>
+          <li>
+            <AsteriskSimple size={sizeAsterisk} />
+            <AsteriskSimple size={sizeAsterisk} />
+            <AsteriskSimple size={sizeAsterisk} />
+            <AsteriskSimple size={sizeAsterisk} />
+          </li>
+          <li>2321</li>
+        </ul>
+      </Card>
+      <div>Transactions</div>
+    </Wrapper>
+  );
 }
