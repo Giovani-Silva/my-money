@@ -38,6 +38,7 @@
       "id": 1,
       "name": "C6",
       "limit": 5000,
+      "cardDigit": 1000,
       "color": "#3D3D3D",
       "transactions": [
         {
@@ -51,10 +52,28 @@
       ]
     },
     {
-      "id": 1,
+      "id": 2,
       "name": "Nubank",
       "limit": 5000,
+      "cardDigit": 1000,
       "color": "#9D02D9",
+      "transactions": [
+        {
+          "description": "Medicamentos",
+          "price": 189,
+          "category": "Saúde",
+          "type": "outcome",
+          "createdAt": "2022-10-01T23:09:22.112Z",
+          "id": 4
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Inter",
+      "limit": 5000,
+      "cardDigit": 1000,
+      "color": "#FF8A00",
       "transactions": [
         {
           "description": "Medicamentos",

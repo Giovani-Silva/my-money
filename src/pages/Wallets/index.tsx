@@ -1,8 +1,9 @@
-import { AsteriskSimple } from 'phosphor-react';
+import { AsteriskSimple, Plus } from 'phosphor-react';
 import { useContext, useEffect } from 'react';
+import { TransactionsList } from '../../components/TransactionsList';
 import { TitleContext } from '../../contexts/TitleContext';
-import { WalletsContext } from '../../contexts/WalletsContext';
-import { Card, Wrapper } from './styles';
+import { Wallet, WalletsContext } from '../../contexts/WalletsContext';
+import { Card, Info, Transactions, Wrapper, WrapperWallet } from './styles';
 
 export function Wallets() {
   const { setTitle } = useContext(TitleContext);
@@ -15,32 +16,46 @@ export function Wallets() {
     setTitle('My Wallets');
   }, [setTitle]);
   return (
-    <Wrapper>
-      <Card>
-        <h3>Card name</h3>
-        <ul>
-          <li>
-            <AsteriskSimple size={sizeAsterisk} />
-            <AsteriskSimple size={sizeAsterisk} />
-            <AsteriskSimple size={sizeAsterisk} />
-            <AsteriskSimple size={sizeAsterisk} />
-          </li>
-          <li>
-            <AsteriskSimple size={sizeAsterisk} />
-            <AsteriskSimple size={sizeAsterisk} />
-            <AsteriskSimple size={sizeAsterisk} />
-            <AsteriskSimple size={sizeAsterisk} />
-          </li>
-          <li>
-            <AsteriskSimple size={sizeAsterisk} />
-            <AsteriskSimple size={sizeAsterisk} />
-            <AsteriskSimple size={sizeAsterisk} />
-            <AsteriskSimple size={sizeAsterisk} />
-          </li>
-          <li>2321</li>
-        </ul>
-      </Card>
-      <div>Transactions</div>
-    </Wrapper>
+    <>
+      {wallets.map((wallet: Wallet) => (
+        <Wrapper key={wallet.id}>
+          <WrapperWallet>
+            <Card color={wallet.color}>
+              <h3>{wallet.name}</h3>
+              <ul>
+                {['*1', '*2', '*3'].map((i) => (
+                  <li key={i}>
+                    <AsteriskSimple size={sizeAsterisk} />
+                    <AsteriskSimple size={sizeAsterisk} />
+                    <AsteriskSimple size={sizeAsterisk} />
+                    <AsteriskSimple size={sizeAsterisk} />
+                  </li>
+                ))}
+
+                <li>{wallet.cardDigit}</li>
+              </ul>
+            </Card>
+            <Info>
+              <div>
+                <span>Your Limit</span>
+                <span>R$ 5.000</span>
+              </div>
+              <div>
+                <span>Your Balance</span>
+                <span>R$ 4.500</span>
+              </div>
+
+              <button>
+                <Plus size={16} /> Add New Card
+              </button>
+            </Info>
+          </WrapperWallet>
+          <Transactions>
+            <h4>My Payments</h4>
+            <TransactionsList transactions={wallet.transactions} />
+          </Transactions>
+        </Wrapper>
+      ))}
+    </>
   );
 }
