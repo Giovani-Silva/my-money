@@ -1,5 +1,7 @@
 import { AsteriskSimple, Plus } from 'phosphor-react';
 import { useContext, useEffect } from 'react';
+import { BaseModal } from '../../components/BaseModal';
+import { NewWalletModal } from '../../components/NewWalletModal';
 import { TransactionsList } from '../../components/TransactionsList';
 import { TitleContext } from '../../contexts/TitleContext';
 import { Wallet, WalletsContext } from '../../contexts/WalletsContext';
@@ -56,6 +58,9 @@ export function Wallets() {
           </Transactions>
         </Wrapper>
       ))}
+      <BaseModal>
+        <NewWalletModal />
+      </BaseModal>
     </>
   );
 }

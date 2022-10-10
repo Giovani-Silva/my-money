@@ -1,15 +1,17 @@
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import * as z from 'zod';
 import { WalletsContext } from '../../contexts/WalletsContext';
 
 const newWalletFormSchema = z.object({
-  description: z.string(),
-  price: z.number(),
-  category: z.string(),
-  type: z.enum(['income', 'outcome']),
+  name: z.string(),
+  limit: z.number(),
+  cardDigit: z.string(),
+  color: z.string(),
 });
 
-type = z.infer<typeof newWalletFormSchema>;
+type NewWalletFormInputs = z.infer<typeof newWalletFormSchema>;
 
 export function NewWalletModal() {
   const { createWallet } = useContext(WalletsContext);
@@ -24,13 +26,13 @@ export function NewWalletModal() {
   });
 
   async function handleCreateNewWallet(data: NewWalletFormInputs) {
-    const { description, price, category, type } = data;
+    const { name, limit, cardDigit, color } = data;
 
-    await createTransaction({
-      description,
-      price,
-      category,
-      type,
+    await createWallet({
+      name,
+      limit,
+      cardDigit,
+      color,
     });
 
     reset();
@@ -38,9 +40,13 @@ export function NewWalletModal() {
 
   return (
     <form onSubmit={handleSubmit(handleCreateNewWallet)}>
-      <input type="text" placeholder="Descrição" required {...register('description')} />
-      <input type="number" placeholder="Preço" required {...register('price', { valueAsNumber: true })} />
-      <input type="text" placeholder="Categoria" required {...register('category')} />
+      <input type="text" placeholder="Nome" required {...register('name')} />
+      <input type="number" placeholder="Limite" required {...register('limit', { valueAsNumber: true })} />
+      <input type="text" placeholder="Card Digit" required {...register('cardDigit')} />
+      <input type="text" placeholder="Cor" required {...register('color')} />
+      <button type="submit" disabled={isSubmitting}>
+        Save
+      </button>
     </form>
   );
 }
