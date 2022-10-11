@@ -1,3 +1,4 @@
+import * as Dialog from '@radix-ui/react-dialog';
 import { AsteriskSimple, Plus } from 'phosphor-react';
 import { useContext, useEffect } from 'react';
 import { BaseModal } from '../../components/BaseModal';
@@ -47,9 +48,17 @@ export function Wallets() {
                 <span>R$ 4.500</span>
               </div>
 
-              <button>
-                <Plus size={16} /> Add New Card
-              </button>
+              <Dialog.Root>
+                <Dialog.Trigger asChild>
+                  <button>
+                    <Plus size={16} /> Add New Card
+                  </button>
+                </Dialog.Trigger>
+                <BaseModal>
+                  <Dialog.Title>New Wallet</Dialog.Title>
+                  <NewWalletModal />
+                </BaseModal>
+              </Dialog.Root>
             </Info>
           </WrapperWallet>
           <Transactions>
@@ -58,9 +67,6 @@ export function Wallets() {
           </Transactions>
         </Wrapper>
       ))}
-      <BaseModal>
-        <NewWalletModal />
-      </BaseModal>
     </>
   );
 }
