@@ -13,9 +13,9 @@ interface Transactions {
 export interface Wallet {
   id: number;
   name: string;
-  cardDigit: number;
-  limit: number;
+  cardDigit: string;
   color: string;
+  limit: number;
   transactions: Transactions[];
 }
 
@@ -52,11 +52,12 @@ export function WalletsProvider({ children }: WalletsProviderProps) {
   }
 
   async function createWallet(data: CreateWalletInput) {
-    const { name, limit, cardDigit } = data;
+    const { name, limit, cardDigit, color } = data;
     const response = await api.post('wallets', {
       name,
       limit,
       cardDigit,
+      color,
       transaction: [],
       createdAt: new Date(),
     });

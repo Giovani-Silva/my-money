@@ -38,7 +38,7 @@
       "id": 1,
       "name": "C6",
       "limit": 5000,
-      "cardDigit": 1000,
+      "cardDigit": "1000",
       "color": "#3D3D3D",
       "transactions": [
         {
@@ -55,7 +55,7 @@
       "id": 2,
       "name": "Nubank",
       "limit": 5000,
-      "cardDigit": 1000,
+      "cardDigit": "1000",
       "color": "#9D02D9",
       "transactions": [
         {
@@ -72,7 +72,7 @@
       "id": 3,
       "name": "Inter",
       "limit": 5000,
-      "cardDigit": 1000,
+      "cardDigit": "1000",
       "color": "#FF8A00",
       "transactions": [
         {
@@ -84,6 +84,15 @@
           "id": 4
         }
       ]
+    },
+    {
+      "name": "Credicard",
+      "limit": 5000,
+      "cardDigit": "0001",
+      "color": "#51b7ff",
+      "transaction": [],
+      "createdAt": "2022-10-12T21:37:03.046Z",
+      "id": 4
     }
   ]
 }

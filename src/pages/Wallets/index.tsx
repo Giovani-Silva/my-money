@@ -63,7 +63,7 @@ export function Wallets() {
           </WrapperWallet>
           <Transactions>
             <h4>My Payments</h4>
-            <TransactionsList transactions={wallet.transactions} />
+            {wallet.transactions && <TransactionsList transactions={wallet.transactions} />}
           </Transactions>
         </Wrapper>
       ))}
