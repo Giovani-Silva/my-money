@@ -3,7 +3,6 @@ import { X } from 'phosphor-react'
 import { CloseButton, Content, Overlay } from './styles'
 
 export function BaseModal({ children }) {
-  console.log(children)
   return (
     <Dialog.Portal>
       <Overlay />

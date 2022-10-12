@@ -6,6 +6,7 @@ import { NewWalletModal } from '../../components/NewWalletModal';
 import { TransactionsList } from '../../components/TransactionsList';
 import { TitleContext } from '../../contexts/TitleContext';
 import { Wallet, WalletsContext } from '../../contexts/WalletsContext';
+import { priceFormatter } from '../../utils/formatter';
 import { Card, Info, Transactions, Wrapper, WrapperWallet } from './styles';
 
 export function Wallets() {
@@ -14,6 +15,25 @@ export function Wallets() {
   const sizeAsterisk = 12;
 
   console.log(wallets);
+
+  const outcome = (transactions: any[]) => {
+    if (transactions?.length) {
+      return transactions.reduce((acc, transaction) => {
+        acc += transaction?.price || 0;
+
+        return acc;
+      }, 0);
+    }
+    return 0;
+  };
+
+  const balance = (limit: number, transactions) => {
+    if (limit && transactions?.length) {
+      return limit - outcome(transactions);
+    }
+
+    return limit;
+  };
 
   useEffect(() => {
     setTitle('My Wallets');
@@ -41,11 +61,15 @@ export function Wallets() {
             <Info>
               <div>
                 <span>Your Limit</span>
-                <span>R$ 5.000</span>
+                <span>{priceFormatter.format(wallet.limit)}</span>
+              </div>
+              <div>
+                <span>Your Expenses</span>
+                <span>{priceFormatter.format(outcome(wallet.transactions))}</span>
               </div>
               <div>
                 <span>Your Balance</span>
-                <span>R$ 4.500</span>
+                <span>{priceFormatter.format(balance(wallet.limit, wallet.transactions))}</span>
               </div>
 
               <Dialog.Root>

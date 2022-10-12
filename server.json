@@ -43,7 +43,7 @@
       "transactions": [
         {
           "description": "Medicamentos",
-          "price": 189,
+          "price": 19,
           "category": "Saúde",
           "type": "outcome",
           "createdAt": "2022-10-01T23:09:22.112Z",
@@ -60,7 +60,7 @@
       "transactions": [
         {
           "description": "Medicamentos",
-          "price": 189,
+          "price": 89,
           "category": "Saúde",
           "type": "outcome",
           "createdAt": "2022-10-01T23:09:22.112Z",
@@ -77,7 +77,7 @@
       "transactions": [
         {
           "description": "Medicamentos",
-          "price": 189,
+          "price": 9,
           "category": "Saúde",
           "type": "outcome",
           "createdAt": "2022-10-01T23:09:22.112Z",
@@ -87,7 +87,7 @@
     },
     {
       "name": "Credicard",
-      "limit": 5000,
+      "limit": 7000,
       "cardDigit": "0001",
       "color": "#51b7ff",
       "transaction": [],

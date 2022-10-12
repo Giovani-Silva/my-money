@@ -68,6 +68,14 @@ export const Info = styled.div`
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+
+    &:nth-child(2) {
+      span {
+        &:last-child {
+          color: ${(props) => props.theme['red-500']};
+        }
+      }
+    }
     span {
       display: block;
 
