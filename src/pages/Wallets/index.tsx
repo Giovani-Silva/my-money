@@ -14,8 +14,6 @@ export function Wallets() {
   const { wallets } = useContext(WalletsContext);
   const sizeAsterisk = 12;
 
-  console.log(wallets);
-
   const outcome = (transactions: any[]) => {
     if (transactions?.length) {
       return transactions.reduce((acc, transaction) => {

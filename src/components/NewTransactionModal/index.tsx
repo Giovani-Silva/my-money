@@ -42,8 +42,6 @@ export function NewTransactionModal() {
 
   const isIncomeOrOutcome = watch('type')
 
-  console.log(isIncomeOrOutcome)
-
   async function handleCreateNewTransaction(data: NewTransactionFormInputs) {
     const { description, price, category, type } = data
 
