@@ -1,5 +1,6 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import { useContext, useEffect } from 'react';
+import { BaseModal } from '../../components/BaseModal';
 import { NewTransactionModal } from '../../components/NewTransactionModal';
 import { TransactionsList } from '../../components/TransactionsList';
 import { TitleContext } from '../../contexts/TitleContext';
@@ -18,9 +19,12 @@ export function Transactions() {
     <TransactionsWrapper>
       <Dialog.Root>
         <Dialog.Trigger asChild>
-          <NewTransactionButton>Nova transação</NewTransactionButton>
+          <NewTransactionButton>Add New Transaction</NewTransactionButton>
         </Dialog.Trigger>
-        <NewTransactionModal />
+        <BaseModal>
+          <Dialog.Title>New Transaction</Dialog.Title>
+          <NewTransactionModal />
+        </BaseModal>
       </Dialog.Root>
       <TransactionsList transactions={transactions} />
     </TransactionsWrapper>
