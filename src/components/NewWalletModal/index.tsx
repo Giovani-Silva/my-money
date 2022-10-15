@@ -19,7 +19,6 @@ export function NewWalletModal() {
   const {
     register,
     handleSubmit,
-    watch,
     reset,
     formState: { isSubmitting },
   } = useForm<any>({

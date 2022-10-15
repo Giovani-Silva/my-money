@@ -87,27 +87,48 @@ export const Info = styled.div`
       }
     }
   }
+`;
 
-  button {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.25rem;
-    padding: 1rem;
-    border: none;
-    font-weight: 700;
-    border-radius: 6px;
-    color: ${(props) => props.theme['primary-600']};
-    background: ${(props) => props.theme['background-200']};
-    cursor: pointer;
-    transition: background 200ms ease, color 250ms ease;
+export const Action = styled.div`
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  border-top: 1px solid ${(props) => props.theme['background-200']};
+  width: 100%;
+  padding: 2rem 1rem 1rem;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  margin-top: 1rem;
+`;
 
-    &:hover {
-      color: ${(props) => props.theme['text-500']};
-      background: ${(props) => props.theme['primary-500']};
-    }
+export const BaseButton = styled.button`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 1rem;
+  border: none;
+  font-weight: 700;
+  border-radius: 6px;
+  color: ${(props) => props.theme['primary-600']};
+  background: ${(props) => props.theme['background-200']};
+  cursor: pointer;
+  transition: background 200ms ease, color 250ms ease;
+
+  &:hover {
+    color: ${(props) => props.theme['text-500']};
+    background: ${(props) => props.theme['primary-500']};
   }
 `;
-export const Transactions = styled.section``;
-export const WrapperWallet = styled.section``;
+
+export const DeleteButton = styled(BaseButton)`
+  color: ${(props) => props.theme['red-500']};
+  background: ${(props) => props.theme['red-300']};
+  transition: background 200ms ease, color 250ms ease;
+
+  &:hover {
+    color: ${(props) => props.theme['background-200']};
+    background: ${(props) => props.theme['red-500']};
+  }
+`;

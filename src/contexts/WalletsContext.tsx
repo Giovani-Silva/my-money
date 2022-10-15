@@ -29,6 +29,7 @@ interface WalletsContextType {
   wallets: Wallet[];
   createWallet: (data: CreateWalletInput) => Promise<void>;
   fetchWallets: (query?: string) => void;
+  deleteWallet: (id: number) => void;
 }
 
 interface WalletsProviderProps {
@@ -64,9 +65,14 @@ export function WalletsProvider({ children }: WalletsProviderProps) {
     setWallets((state) => [response.data, ...state]);
   }
 
+  async function deleteWallet(id: number) {
+    await api.delete(`wallets/${id}`);
+    fetchWallets();
+  }
+
   useEffect(() => {
     fetchWallets();
   }, []);
 
-  return <WalletsContext.Provider value={{ wallets, fetchWallets, createWallet }}>{children}</WalletsContext.Provider>;
+  return <WalletsContext.Provider value={{ wallets, fetchWallets, createWallet, deleteWallet }}>{children}</WalletsContext.Provider>;
 }

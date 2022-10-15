@@ -1,5 +1,5 @@
 import * as Dialog from '@radix-ui/react-dialog';
-import { AsteriskSimple, Plus } from 'phosphor-react';
+import { AsteriskSimple, Plus, Trash } from 'phosphor-react';
 import { useContext, useEffect } from 'react';
 import { BaseModal } from '../../components/BaseModal';
 import { NewWalletModal } from '../../components/NewWalletModal';
@@ -7,11 +7,11 @@ import { TransactionsList } from '../../components/TransactionsList';
 import { TitleContext } from '../../contexts/TitleContext';
 import { Wallet, WalletsContext } from '../../contexts/WalletsContext';
 import { priceFormatter } from '../../utils/formatter';
-import { Card, Info, Transactions, Wrapper, WrapperWallet } from './styles';
+import { Action, BaseButton, Card, DeleteButton, Info, Wrapper } from './styles';
 
 export function Wallets() {
   const { setTitle } = useContext(TitleContext);
-  const { wallets } = useContext(WalletsContext);
+  const { wallets, deleteWallet } = useContext(WalletsContext);
   const sizeAsterisk = 12;
 
   const outcome = (transactions: any[]) => {
@@ -40,7 +40,7 @@ export function Wallets() {
     <>
       {wallets.map((wallet: Wallet) => (
         <Wrapper key={wallet.id}>
-          <WrapperWallet>
+          <section>
             <Card color={wallet.color}>
               <h3>{wallet.name}</h3>
               <ul>
@@ -70,23 +70,29 @@ export function Wallets() {
                 <span>{priceFormatter.format(balance(wallet.limit, wallet.transactions))}</span>
               </div>
 
-              <Dialog.Root>
-                <Dialog.Trigger asChild>
-                  <button>
-                    <Plus size={16} /> Add New Card
-                  </button>
-                </Dialog.Trigger>
-                <BaseModal>
-                  <Dialog.Title>New Wallet</Dialog.Title>
-                  <NewWalletModal />
-                </BaseModal>
-              </Dialog.Root>
+              <Action>
+                <DeleteButton onClick={() => deleteWallet(wallet.id)}>
+                  <Trash size={16} /> Remove This Card
+                </DeleteButton>
+
+                <Dialog.Root>
+                  <Dialog.Trigger asChild>
+                    <BaseButton>
+                      <Plus size={16} /> Add New Card
+                    </BaseButton>
+                  </Dialog.Trigger>
+                  <BaseModal>
+                    <Dialog.Title>New Wallet</Dialog.Title>
+                    <NewWalletModal />
+                  </BaseModal>
+                </Dialog.Root>
+              </Action>
             </Info>
-          </WrapperWallet>
-          <Transactions>
+          </section>
+          <section>
             <h4>My Payments</h4>
             {wallet.transactions && <TransactionsList transactions={wallet.transactions} />}
-          </Transactions>
+          </section>
         </Wrapper>
       ))}
     </>
