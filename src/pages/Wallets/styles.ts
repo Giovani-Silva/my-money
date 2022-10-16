@@ -1,3 +1,5 @@
+import * as Dialog from '@radix-ui/react-dialog';
+import * as SelectPrimitive from '@radix-ui/react-select';
 import styled from 'styled-components';
 
 interface CardColor {
@@ -105,8 +107,8 @@ export const BaseButton = styled.button`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.25rem;
+  justify-content: space-between;
+  gap: 1rem;
   padding: 1rem;
   border: none;
   font-weight: 700;
@@ -130,5 +132,61 @@ export const DeleteButton = styled(BaseButton)`
   &:hover {
     color: ${(props) => props.theme['background-200']};
     background: ${(props) => props.theme['red-500']};
+  }
+`;
+
+export const SelectButton = styled(BaseButton)`
+  color: ${(props) => props.theme['text-200']};
+  background: ${(props) => props.theme['background-500']};
+  &:hover {
+    color: ${(props) => props.theme['text-300']};
+    background: ${(props) => props.theme.black};
+  }
+`;
+
+export const SelectViewPort = styled(SelectPrimitive.Viewport)`
+  padding: 1rem;
+  background: ${(props) => props.theme.black};
+  border: none;
+  border-radius: 6px;
+  outline: none;
+`;
+
+export const SelectItem = styled(SelectPrimitive.Item)`
+  display: flex;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: color 250ms ease;
+  color: ${(props) => props.theme['text-200']};
+  &:hover {
+    outline: none;
+    color: ${(props) => props.theme['primary-500']};
+  }
+`;
+
+export const ConfirmDeleteWalletModal = styled.div`
+  margin: 3rem 0 0;
+  display: flex;
+  gap: 2rem;
+`;
+
+export const CancelButton = styled(Dialog.Close)`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  border: none;
+  font-weight: 700;
+  border-radius: 6px;
+  color: ${(props) => props.theme['text-300']};
+  background: ${(props) => props.theme['background-300']};
+  cursor: pointer;
+  transition: background 200ms ease, color 250ms ease;
+
+  &:hover {
+    color: ${(props) => props.theme['text-500']};
+    background: ${(props) => props.theme['primary-500']};
   }
 `;
