@@ -84,8 +84,8 @@ export function Wallets() {
               </div>
 
               <Action>
-                <SelectPrimitive.Root defaultValue="blueberry">
-                  <SelectPrimitive.Trigger asChild aria-label="Food">
+                <SelectPrimitive.Root defaultValue={wallets[0].name}>
+                  <SelectPrimitive.Trigger asChild aria-label="Wallet">
                     <SelectButton>
                       <SelectPrimitive.Value />
                       <SelectPrimitive.Icon>
@@ -99,9 +99,9 @@ export function Wallets() {
                     </SelectPrimitive.ScrollUpButton>
                     <SelectViewPort>
                       <SelectPrimitive.Group>
-                        {['Apple', 'Banana', 'Blueberry', 'Strawberry', 'Grapes'].map((f, i) => (
-                          <SelectItem key={`${f}-${i}`} value={f.toLowerCase()}>
-                            <SelectPrimitive.ItemText>{f}</SelectPrimitive.ItemText>
+                        {wallets.map((wallet, i) => (
+                          <SelectItem key={`${wallet.name.toLowerCase()}-${i}`} value={wallet.name}>
+                            <SelectPrimitive.ItemText>{wallet.name}</SelectPrimitive.ItemText>
                           </SelectItem>
                         ))}
                       </SelectPrimitive.Group>
@@ -118,10 +118,9 @@ export function Wallets() {
                   <BaseModal>
                     <Dialog.Title>Delete this wallet</Dialog.Title>
                     <ConfirmDeleteWalletModal>
-
-                        <CancelButton>
-                          Cancel <X size={16} />
-                        </CancelButton>
+                      <CancelButton>
+                        Cancel <X size={16} />
+                      </CancelButton>
                       <DeleteButton onClick={() => deleteWallet(wallet.id)}>
                         Remove <Trash size={16} />
                       </DeleteButton>
