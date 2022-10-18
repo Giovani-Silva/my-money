@@ -1,7 +1,7 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import * as SelectPrimitive from '@radix-ui/react-select';
-import { AsteriskSimple, CaretDown, CaretUp, Plus, Trash, X } from 'phosphor-react';
-import { useContext, useEffect } from 'react';
+import { AsteriskSimple, CaretDown, CaretUp, Check, Plus, Trash, X } from 'phosphor-react';
+import { useContext, useEffect, useState } from 'react';
 import { BaseModal } from '../../components/BaseModal';
 import { NewWalletModal } from '../../components/NewWalletModal';
 import { TransactionsList } from '../../components/TransactionsList';
@@ -16,8 +16,11 @@ import {
   ConfirmDeleteWalletModal,
   DeleteButton,
   Info,
+  InfoBlock,
   SelectButton,
   SelectItem,
+  SelectItemIndicator,
+  SelectItemText,
   SelectViewPort,
   Wrapper,
 } from './styles';
@@ -26,6 +29,7 @@ export function Wallets() {
   const { setTitle } = useContext(TitleContext);
   const { wallets, deleteWallet } = useContext(WalletsContext);
   const sizeAsterisk = 12;
+  const [selectedWallet, setSelectedWallet] = useState(0);
 
   const outcome = (transactions: any[]) => {
     if (transactions?.length) {
@@ -70,18 +74,18 @@ export function Wallets() {
               </ul>
             </Card>
             <Info>
-              <div>
+              <InfoBlock>
                 <span>Your Limit</span>
                 <span>{priceFormatter.format(wallet.limit)}</span>
-              </div>
-              <div>
+              </InfoBlock>
+              <InfoBlock>
                 <span>Your Expenses</span>
                 <span>{priceFormatter.format(outcome(wallet.transactions))}</span>
-              </div>
-              <div>
+              </InfoBlock>
+              <InfoBlock>
                 <span>Your Balance</span>
                 <span>{priceFormatter.format(balance(wallet.limit, wallet.transactions))}</span>
-              </div>
+              </InfoBlock>
 
               <Action>
                 <SelectPrimitive.Root defaultValue={wallets[0].name}>
@@ -101,7 +105,10 @@ export function Wallets() {
                       <SelectPrimitive.Group>
                         {wallets.map((wallet, i) => (
                           <SelectItem key={`${wallet.name.toLowerCase()}-${i}`} value={wallet.name}>
-                            <SelectPrimitive.ItemText>{wallet.name}</SelectPrimitive.ItemText>
+                            <SelectItemIndicator>
+                              <Check />
+                            </SelectItemIndicator>
+                            <SelectItemText>{wallet.name}</SelectItemText>
                           </SelectItem>
                         ))}
                       </SelectPrimitive.Group>

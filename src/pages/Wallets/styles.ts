@@ -65,28 +65,28 @@ export const Info = styled.div`
   justify-content: center;
   align-items: flex-start;
   gap: 1rem;
+`;
 
-  div {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+export const InfoBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 
-    &:nth-child(2) {
-      span {
-        &:last-child {
-          color: ${(props) => props.theme['red-500']};
-        }
+  &:nth-child(2) {
+    span {
+      &:last-child {
+        color: ${(props) => props.theme['red-500']};
       }
     }
-    span {
-      display: block;
+  }
+  span {
+    display: block;
 
-      &:first-child {
-        color: ${(props) => props.theme['text-300']};
-      }
-      &:last-child {
-        font-weight: 700;
-      }
+    &:first-child {
+      color: ${(props) => props.theme['text-300']};
+    }
+    &:last-child {
+      font-weight: 700;
     }
   }
 `;
@@ -146,22 +146,40 @@ export const SelectButton = styled(BaseButton)`
 
 export const SelectViewPort = styled(SelectPrimitive.Viewport)`
   padding: 1rem;
+  color: ${(props) => props.theme['text-300']};
   background: ${(props) => props.theme.black};
   border: none;
   border-radius: 6px;
   outline: none;
+
+  box-sizing: border-box;
 `;
 
 export const SelectItem = styled(SelectPrimitive.Item)`
+  all: 'unset';
+  box-sizing: border-box;
   display: flex;
-  gap: 0.5rem;
+  gap: 1rem;
   cursor: pointer;
+  padding: 0.5rem 0;
   transition: color 250ms ease;
-  color: ${(props) => props.theme['text-200']};
   &:hover {
-    outline: none;
     color: ${(props) => props.theme['primary-500']};
   }
+`;
+
+export const SelectItemText = styled(SelectPrimitive.ItemText)`
+  color: ${(props) => props.theme['text-200']};
+  padding-left: 1rem;
+`;
+
+export const SelectItemIndicator = styled(SelectPrimitive.ItemIndicator)`
+  position: absolute;
+  right: 1rem;
+  width: 1.5625rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const ConfirmDeleteWalletModal = styled.div`
