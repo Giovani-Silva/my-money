@@ -27,7 +27,6 @@ export function NewWalletModal() {
 
   async function handleCreateNewWallet(data: NewWalletFormInputs) {
     const { name, limit, cardDigit, color } = data;
-    console.log(name, limit, cardDigit, color);
     await createWallet({
       name,
       limit,

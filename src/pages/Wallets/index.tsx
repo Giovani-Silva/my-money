@@ -6,7 +6,7 @@ import { BaseModal } from '../../components/BaseModal';
 import { NewWalletModal } from '../../components/NewWalletModal';
 import { TransactionsList } from '../../components/TransactionsList';
 import { TitleContext } from '../../contexts/TitleContext';
-import { Wallet, WalletsContext } from '../../contexts/WalletsContext';
+import { WalletsContext } from '../../contexts/WalletsContext';
 import { priceFormatter } from '../../utils/formatter';
 import {
   Action,
@@ -29,7 +29,18 @@ export function Wallets() {
   const { setTitle } = useContext(TitleContext);
   const { wallets, deleteWallet } = useContext(WalletsContext);
   const sizeAsterisk = 12;
-  const [selectedWallet, setSelectedWallet] = useState(0);
+  const [selectedWallet, setSelectedWallet] = useState(null);
+
+  useEffect(() => {
+    setTitle('My Wallets');
+  }, [setTitle]);
+
+  function handleSelectWallet(value: any) {
+    const [selected] = wallets.filter((wallet) => wallet.name === value);
+    if (selected.name !== selectedWallet?.name) {
+      setSelectedWallet(selected);
+    }
+  }
 
   const outcome = (transactions: any[]) => {
     if (transactions?.length) {
@@ -50,12 +61,10 @@ export function Wallets() {
     return limit;
   };
 
-  useEffect(() => {
-    setTitle('My Wallets');
-  }, [setTitle]);
+  const wallet = selectedWallet || wallets[0];
   return (
     <>
-      {wallets.map((wallet: Wallet) => (
+      {wallet && (
         <Wrapper key={wallet.id}>
           <section>
             <Card color={wallet.color}>
@@ -88,7 +97,7 @@ export function Wallets() {
               </InfoBlock>
 
               <Action>
-                <SelectPrimitive.Root defaultValue={wallets[0].name}>
+                <SelectPrimitive.Root defaultValue={wallet.name} onValueChange={(value) => handleSelectWallet(value)}>
                   <SelectPrimitive.Trigger asChild aria-label="Wallet">
                     <SelectButton>
                       <SelectPrimitive.Value />
@@ -154,7 +163,7 @@ export function Wallets() {
             {wallet.transactions && <TransactionsList transactions={wallet.transactions} />}
           </section>
         </Wrapper>
-      ))}
+      )}
     </>
   );
 }
