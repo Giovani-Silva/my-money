@@ -69,6 +69,10 @@ export function Wallets() {
           <section>
             <Card color={wallet.color}>
               <h3>{wallet.name}</h3>
+              <div>
+                <span>{priceFormatter.format(wallet.limit)}</span>
+                <span>Your Limit</span>
+              </div>
               <ul>
                 {['*1', '*2', '*3'].map((i) => (
                   <li key={i}>
@@ -83,10 +87,6 @@ export function Wallets() {
               </ul>
             </Card>
             <Info>
-              <InfoBlock>
-                <span>Your Limit</span>
-                <span>{priceFormatter.format(wallet.limit)}</span>
-              </InfoBlock>
               <InfoBlock>
                 <span>Your Expenses</span>
                 <span>{priceFormatter.format(outcome(wallet.transactions))}</span>

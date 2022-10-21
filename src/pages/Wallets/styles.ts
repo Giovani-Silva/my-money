@@ -13,16 +13,12 @@ export const Wrapper = styled.div`
 
   section:last-child {
     flex: 1;
-
-    main {
-      
-    }
   }
 `;
 
 export const Card = styled.div<CardColor>`
   color: #f5f5f5;
-  display: flex;
+  display: grid;
   border-radius: 0.5rem;
   flex-direction: column;
   border-radius: 6px;
@@ -44,14 +40,28 @@ export const Card = styled.div<CardColor>`
     background: linear-gradient(45deg, #0000008c, #00000036);
   }
 
-  h3 {
+  > h3 {
     font-size: 1.25rem;
     font-family: ${(props) => props.theme['font-default']};
     text-transform: uppercase;
     z-index: 10;
   }
 
-  ul {
+  > div {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    right: 2rem;
+    top: 2rem;
+
+    span:last-child {
+      font-size: 0.75rem;
+      opacity: 0.5;
+    }
+  }
+
+  > ul {
     margin: 3rem 0 0;
     padding: 0;
     list-style: none;
@@ -171,6 +181,7 @@ export const SelectItem = styled(SelectPrimitive.Item)`
   cursor: pointer;
   padding: 0.5rem 0;
   transition: color 250ms ease;
+  margin-bottom: 1rem;
   &:hover {
     color: ${(props) => props.theme['primary-500']};
   }
