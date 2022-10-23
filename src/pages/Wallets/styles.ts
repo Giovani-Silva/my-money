@@ -22,8 +22,8 @@ export const Card = styled.div<CardColor>`
   border-radius: 0.5rem;
   flex-direction: column;
   border-radius: 6px;
-  min-width: 280px;
-  min-height: 12.5rem;
+  width: 20rem;
+  height: 12.5rem;
   background: ${(props) => props.color || props.theme['primary-500']};
   padding: 2rem;
   gap: 1rem;
@@ -90,13 +90,6 @@ export const InfoBlock = styled.div`
   flex-direction: column;
   gap: 0.5rem;
 
-  &:nth-child(2) {
-    span {
-      &:last-child {
-        color: ${(props) => props.theme['red-500']};
-      }
-    }
-  }
   span {
     display: block;
 
