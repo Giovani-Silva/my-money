@@ -66,6 +66,7 @@ export const Card = styled.div<CardColor>`
     padding: 0;
     list-style: none;
     display: flex;
+    justify-content: space-between;
     gap: 1rem;
     text-indent: 2px;
     font-size: 20px;
