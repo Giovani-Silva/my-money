@@ -38,6 +38,7 @@ export function Wallets() {
   }, [setTitle]);
 
   const wallet = selectedWallet;
+  
   useEffect(() => {
     if (wallets.length) {
       handleSelectWallet(wallets[0].name);
