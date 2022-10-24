@@ -3,11 +3,13 @@ import * as SelectPrimitive from '@radix-ui/react-select';
 import { AsteriskSimple, CaretDown, CaretUp, Check, Plus, Trash, X } from 'phosphor-react';
 import { useContext, useEffect, useState } from 'react';
 import { BaseModal } from '../../components/BaseModal';
+import { NewTransactionModal } from '../../components/NewTransactionModal';
 import { NewWalletModal } from '../../components/NewWalletModal';
 import { TransactionsList } from '../../components/TransactionsList';
 import { TitleContext } from '../../contexts/TitleContext';
 import { WalletsContext } from '../../contexts/WalletsContext';
 import { priceFormatter } from '../../utils/formatter';
+import { NewTransactionButton } from '../Transactions/styles';
 import {
   Action,
   BaseButton,
@@ -35,11 +37,37 @@ export function Wallets() {
     setTitle('My Wallets');
   }, [setTitle]);
 
+  const wallet = selectedWallet;
+  useEffect(() => {
+    if (wallets.length) {
+      handleSelectWallet(wallets[0].name);
+    }
+  }, [wallets]);
+
   function handleSelectWallet(value: any) {
     const [selected] = wallets.filter((wallet) => wallet.name === value);
-    if (selected.name !== selectedWallet?.name) {
+    if (selected?.name !== selectedWallet?.name) {
       setSelectedWallet(selected);
     }
+  }
+
+  function handleDeleteWallet(id) {
+    const deletedIndex = wallets.findIndex((wallet) => wallet.id === id);
+    console.log(deletedIndex);
+    console.log(wallets.length);
+
+    if (wallets.length > 1) {
+      if (!deletedIndex) {
+        handleSelectWallet(wallets[deletedIndex + 1].name);
+      } else {
+        handleSelectWallet(wallets[deletedIndex - 1].name);
+      }
+    } else {
+      handleSelectWallet(null);
+    }
+
+    deleteWallet(id);
+    // }
   }
 
   const outcome = (transactions: any[]) => {
@@ -61,7 +89,6 @@ export function Wallets() {
     return limit;
   };
 
-  const wallet = selectedWallet || wallets[0];
   return (
     <>
       {wallet && (
@@ -137,9 +164,11 @@ export function Wallets() {
                       <CancelButton>
                         Cancel <X size={16} />
                       </CancelButton>
-                      <DeleteButton onClick={() => deleteWallet(wallet.id)}>
-                        Remove <Trash size={16} />
-                      </DeleteButton>
+                      <Dialog.Close asChild>
+                        <DeleteButton onClick={() => handleDeleteWallet(wallet.id)}>
+                          Remove <Trash size={16} />
+                        </DeleteButton>
+                      </Dialog.Close>
                     </ConfirmDeleteWalletModal>
                   </BaseModal>
                 </Dialog.Root>
@@ -160,6 +189,15 @@ export function Wallets() {
           </section>
           <section>
             <h4>My Payments</h4>
+            <Dialog.Root>
+              <Dialog.Trigger asChild>
+                <NewTransactionButton>Add New Payments</NewTransactionButton>
+              </Dialog.Trigger>
+              <BaseModal>
+                <Dialog.Title>New Payments</Dialog.Title>
+                <NewTransactionModal />
+              </BaseModal>
+            </Dialog.Root>
             {wallet.transactions && <TransactionsList transactions={wallet.transactions} />}
           </section>
         </Wrapper>
