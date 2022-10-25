@@ -11,7 +11,7 @@ export const defaultTheme = {
   'primary-500': '#C8EE44',
   'primary-600': '#A1BF34',
 
-  'text-200': '#929EAE',
+  'text-200': '#c5cbd3',
   'text-300': '#929EAE',
   'text-400': '#78778B',
   'text-500': '#1B212D',
@@ -30,4 +30,4 @@ export const defaultTheme = {
 
   'font-default': " 'Kumbh Sans', sans-serif",
   'font-title': "'Concert One', cursive",
-} as const
+} as const;
