@@ -1,11 +1,10 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { ArrowCircleDown, ArrowCircleUp } from 'phosphor-react';
 import { useContext } from 'react';
-import { Controller, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 
 import { TransactionsContext } from '../../contexts/TransactionsContext';
-import { ButtonSumit, TransactionType, TransactionTypeButton } from './styles';
+import { BaseFormTransaction } from '../BaseFormTransaction';
 
 const newTransactionFormSchema = z.object({
   description: z.string(),
@@ -47,32 +46,33 @@ export function NewTransactionModal() {
     reset();
   }
   return (
-    <form onSubmit={handleSubmit(handleCreateNewTransaction)}>
-      <input type="text" placeholder="Descrição" required {...register('description')} />
-      <input type="number" placeholder="Preço" required {...register('price', { valueAsNumber: true })} />
-      <input type="text" placeholder="Categoria" required {...register('category')} />
-      <Controller
-        control={control}
-        name="type"
-        render={({ field }) => {
-          return (
-            <TransactionType onValueChange={field.onChange} value={field.value}>
-              <TransactionTypeButton variant="income" value="income">
-                <ArrowCircleUp size={24} />
-                Entrada
-              </TransactionTypeButton>
-              <TransactionTypeButton variant="outcome" value="outcome">
-                <ArrowCircleDown size={24} />
-                Saída
-              </TransactionTypeButton>
-            </TransactionType>
-          );
-        }}
-      />
+    <BaseFormTransaction createTransaction={createTransaction} />
+    // <form onSubmit={handleSubmit(handleCreateNewTransaction)}>
+    //   <input type="text" placeholder="Descrição" required {...register('description')} />
+    //   <input type="number" placeholder="Preço" required {...register('price', { valueAsNumber: true })} />
+    //   <input type="text" placeholder="Categoria" required {...register('category')} />
+    //   <Controller
+    //     control={control}
+    //     name="type"
+    //     render={({ field }) => {
+    //       return (
+    //         <TransactionType onValueChange={field.onChange} value={field.value}>
+    //           <TransactionTypeButton variant="income" value="income">
+    //             <ArrowCircleUp size={24} />
+    //             Entrada
+    //           </TransactionTypeButton>
+    //           <TransactionTypeButton variant="outcome" value="outcome">
+    //             <ArrowCircleDown size={24} />
+    //             Saída
+    //           </TransactionTypeButton>
+    //         </TransactionType>
+    //       );
+    //     }}
+    //   />
 
-      <ButtonSumit type="submit" disabled={isSubmitting} variant={isIncomeOrOutcome}>
-        Save
-      </ButtonSumit>
-    </form>
+    //   <ButtonSumit type="submit" disabled={isSubmitting} variant={isIncomeOrOutcome}>
+    //     Save
+    //   </ButtonSumit>
+    // </form>
   );
 }
