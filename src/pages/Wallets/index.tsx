@@ -38,7 +38,7 @@ export function Wallets() {
   }, [setTitle]);
 
   const wallet = selectedWallet;
-  
+
   useEffect(() => {
     if (wallets.length) {
       handleSelectWallet(wallets[0].name);
@@ -173,20 +173,20 @@ export function Wallets() {
                     </ConfirmDeleteWalletModal>
                   </BaseModal>
                 </Dialog.Root>
-
-                <Dialog.Root>
-                  <Dialog.Trigger asChild>
-                    <BaseButton>
-                      Add New Card <Plus size={16} />
-                    </BaseButton>
-                  </Dialog.Trigger>
-                  <BaseModal>
-                    <Dialog.Title>New Wallet</Dialog.Title>
-                    <NewWalletModal />
-                  </BaseModal>
-                </Dialog.Root>
               </Action>
             </Info>
+
+            <Dialog.Root>
+              <Dialog.Trigger asChild>
+                <BaseButton>
+                  Add New Card <Plus size={16} />
+                </BaseButton>
+              </Dialog.Trigger>
+              <BaseModal>
+                <Dialog.Title>New Wallet</Dialog.Title>
+                <NewWalletModal />
+              </BaseModal>
+            </Dialog.Root>
           </section>
           <section>
             <h4>My Payments</h4>

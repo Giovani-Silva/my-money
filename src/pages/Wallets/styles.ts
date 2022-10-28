@@ -126,7 +126,7 @@ export const BaseButton = styled.button`
   font-weight: 700;
   border-radius: 6px;
   color: ${(props) => props.theme['primary-600']};
-  background: ${(props) => props.theme['background-200']};
+  background: ${(props) => props.theme['background-300']};
   cursor: pointer;
   transition: background 200ms ease, color 250ms ease;
 
