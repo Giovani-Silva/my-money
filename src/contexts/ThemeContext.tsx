@@ -1,20 +1,19 @@
-import React, { createContext, useContext, useReducer, useState } from 'react';
+import { createContext, useState } from 'react';
 
-import defaultTheme from '../styles/themes/default';
-import darkTheme from '../styles/themes/dark';
+import { darkTheme } from '../styles/themes/dark';
+import { defaultTheme } from '../styles/themes/default';
 
+const [theme, setTheme] = useState(defaultTheme);
 
-const [theme, setTheme ] = useState(defaultTheme);
+const themes = { defaultTheme, darkTheme };
 
-const themes = { defaultTheme, darkTheme }
-
- const toggleTheme = (theme) => {
+const toggleTheme = (theme: any) => {
   setTheme({
-    theme
+    theme,
   });
- };
+};
 const contextTheme = createContext({
   theme,
 });
 
-export { themes, toggleTheme, contextTheme };
+export  { themes, toggleTheme, contextTheme };
